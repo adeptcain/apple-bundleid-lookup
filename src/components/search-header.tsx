@@ -50,11 +50,11 @@ export default function SearchHeader({
   return (
     <header className="border-b sticky top-0 bg-background z-10">
       <div className="container mx-auto py-4 px-4">
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
+        <div className="flex flex-col sm:flex-row gap-2 items-center">
           <div className="relative flex-1 w-full">
             <Input
               type="text"
-              placeholder="Search..."
+              placeholder="Search or Paste App Store URL..."
               className="w-full pr-10"
               value={searchField}
               onChange={(e) => setSearchField(e.target.value)}
@@ -66,7 +66,7 @@ export default function SearchHeader({
             defaultValue={cookies.platform}
             onValueChange={(val) => setCookie("platform", val)}
           >
-            <SelectTrigger className="w-full sm:w-[180px]">
+            <SelectTrigger className="w-full sm:w-[130px]">
               <SelectValue placeholder="Select platform" />
             </SelectTrigger>
             <SelectContent>
@@ -86,7 +86,7 @@ export default function SearchHeader({
             defaultValue={cookies.country}
             onValueChange={(val) => setCookie("country", val)}
           >
-            <SelectTrigger className="w-full sm:w-[180px]">
+            <SelectTrigger className="w-full sm:w-[160px]">
               <SelectValue placeholder="Select country" />
             </SelectTrigger>
             <SelectContent>
