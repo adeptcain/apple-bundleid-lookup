@@ -10,19 +10,42 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Dispatch, SetStateAction, useState, KeyboardEvent } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  KeyboardEvent,
+  useEffect,
+} from "react";
+import { useCookies } from "react-cookie";
 
 export default function SearchHeader({
   setSearchTerm,
+  platform,
+  setPlatform,
+  country,
+  setCountry,
 }: {
   setSearchTerm: Dispatch<SetStateAction<string>>;
+  platform: string;
+  setPlatform: Dispatch<SetStateAction<string>>;
+  country: string;
+  setCountry: Dispatch<SetStateAction<string>>;
 }) {
   const [searchField, setSearchField] = useState("");
+
   const checkKey = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       setSearchTerm(searchField);
     }
   };
+
+  const [cookies, setCookie] = useCookies(["platform", "country"]);
+
+  useEffect(() => {
+    setCountry(cookies.country);
+    setPlatform(cookies.platform);
+  }, [cookies]);
 
   return (
     <header className="border-b sticky top-0 bg-background z-10">
@@ -39,7 +62,10 @@ export default function SearchHeader({
             />
           </div>
 
-          <Select>
+          <Select
+            defaultValue={cookies.platform}
+            onValueChange={(val) => setCookie("platform", val)}
+          >
             <SelectTrigger className="w-full sm:w-[180px]">
               <SelectValue placeholder="Select platform" />
             </SelectTrigger>
@@ -49,11 +75,17 @@ export default function SearchHeader({
             </SelectContent>
           </Select>
 
-          <Button className="w-full sm:w-auto">
+          <Button
+            className="w-full sm:w-auto"
+            onMouseUp={() => setSearchTerm(searchField)}
+          >
             <Search className="h-4 w-4 mr-2" />
             Search
           </Button>
-          <Select>
+          <Select
+            defaultValue={cookies.country}
+            onValueChange={(val) => setCookie("country", val)}
+          >
             <SelectTrigger className="w-full sm:w-[180px]">
               <SelectValue placeholder="Select country" />
             </SelectTrigger>
