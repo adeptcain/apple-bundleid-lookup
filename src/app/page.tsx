@@ -2,13 +2,15 @@
 
 import CardList from "@/components/card-list";
 import SearchHeader from "@/components/search-header";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CookiesProvider } from "react-cookie";
 
 export default function Home() {
   const [cards, setCards] = useState([]);
   const [country, setCountry] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(false);
   const [platform, setPlatform] = useState("");
   const [searchTerm, setSearchTerm] = useState("");

@@ -1,91 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
-import {
-  Copy,
-  Check,
-  FileText,
-  Mail,
-  Globe,
-  Bell,
-  Calendar,
-} from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-
-// Sample data for the cards
-// const cardData = [
-//   {
-//     id: 1,
-//     icon: <FileText className="h-full w-full text-primary" />,
-//     title: "Documentation",
-//     subtitle: "Read our comprehensive guides and references",
-//     content: "Access our documentation at https://docs.example.com",
-//   },
-//   {
-//     id: 2,
-//     icon: <Mail className="h-full w-full text-primary" />,
-//     title: "Email Templates",
-//     subtitle: "Professional email templates for your business",
-//     content: "Download email templates from https://templates.example.com",
-//   },
-//   {
-//     id: 3,
-//     icon: <Globe className="h-full w-full text-primary" />,
-//     title: "API Reference",
-//     subtitle: "Integrate with our powerful API",
-//     content: "API documentation available at https://api.example.com",
-//   },
-//   {
-//     id: 4,
-//     icon: <Bell className="h-full w-full text-primary" />,
-//     title: "Notifications",
-//     subtitle: "Stay updated with real-time alerts",
-//     content: "Configure notifications at https://alerts.example.com",
-//   },
-//   {
-//     id: 5,
-//     icon: <Calendar className="h-full w-full text-primary" />,
-//     title: "Event Calendar",
-//     subtitle: "Never miss an important date",
-//     content: "View upcoming events at https://calendar.example.com",
-//   },
-//   {
-//     id: 6,
-//     icon: <FileText className="h-full w-full text-primary" />,
-//     title: "Documentation",
-//     subtitle: "Read our comprehensive guides and references",
-//     content: "Access our documentation at https://docs.example.com",
-//   },
-//   {
-//     id: 7,
-//     icon: <Mail className="h-full w-full text-primary" />,
-//     title: "Email Templates",
-//     subtitle: "Professional email templates for your business",
-//     content: "Download email templates from https://templates.example.com",
-//   },
-//   {
-//     id: 8,
-//     icon: <Globe className="h-full w-full text-primary" />,
-//     title: "API Reference",
-//     subtitle: "Integrate with our powerful API",
-//     content: "API documentation available at https://api.example.com",
-//   },
-//   {
-//     id: 9,
-//     icon: <Bell className="h-full w-full text-primary" />,
-//     title: "Notifications",
-//     subtitle: "Stay updated with real-time alerts",
-//     content: "Configure notifications at https://alerts.example.com",
-//   },
-//   {
-//     id: 10,
-//     icon: <Calendar className="h-full w-full text-primary" />,
-//     title: "Event Calendar",
-//     subtitle: "Never miss an important date",
-//     content: "View upcoming events at https://calendar.example.com",
-//   },
-// ];
 
 type iTunesCard = {
   id: number;

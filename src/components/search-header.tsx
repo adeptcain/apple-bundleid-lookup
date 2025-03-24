@@ -21,9 +21,7 @@ import { useCookies } from "react-cookie";
 
 export default function SearchHeader({
   setSearchTerm,
-  platform,
   setPlatform,
-  country,
   setCountry,
 }: {
   setSearchTerm: Dispatch<SetStateAction<string>>;
@@ -45,7 +43,7 @@ export default function SearchHeader({
   useEffect(() => {
     setCountry(cookies.country);
     setPlatform(cookies.platform);
-  }, [cookies]);
+  }, [cookies, setCountry, setPlatform]);
 
   return (
     <header className="border-b sticky top-0 bg-background z-10">
