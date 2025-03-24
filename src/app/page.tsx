@@ -2,18 +2,57 @@
 
 import CardList from "@/components/card-list";
 import SearchHeader from "@/components/search-header";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { CookiesProvider } from "react-cookie";
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [platform, setPlatform] = useState("");
-  const [country, setCountry] = useState("");
   const [cards, setCards] = useState("");
+  const [country, setCountry] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [platform, setPlatform] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    if (!searchTerm || !platform || !country) {
+      return;
+    }
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const params = new URLSearchParams({
+          searchTerm,
+          platform,
+          country,
+        });
+
+        const res = await fetch(`/api/itunes-search?${params}`);
+
+        if (!res.ok) {
+          throw new Error(`API responded with status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log(data);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred"
+        );
+        console.error("Error searching for apps:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [searchTerm, platform, country]);
 
   return (
     <CookiesProvider>
-      <div className="min-h-screen bg-background">
+      <div className="flex-col justify-self-center min-h-screen lg:w-224  bg-background">
         <SearchHeader
           setSearchTerm={setSearchTerm}
           platform={platform}

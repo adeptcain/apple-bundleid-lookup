@@ -63,6 +63,24 @@ export default function SearchHeader({
           </div>
 
           <Select
+            defaultValue={cookies.country}
+            onValueChange={(val) => setCookie("country", val)}
+          >
+            <SelectTrigger className="w-full sm:w-[160px]">
+              <SelectValue placeholder="Select country" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="us">United States</SelectItem>
+              <SelectItem value="ca">Canada</SelectItem>
+              <SelectItem value="gb">United Kingdom</SelectItem>
+              <SelectItem value="au">Australia</SelectItem>
+              <SelectItem value="de">Germany</SelectItem>
+              <SelectItem value="fr">France</SelectItem>
+              <SelectItem value="jp">Japan</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select
             defaultValue={cookies.platform}
             onValueChange={(val) => setCookie("platform", val)}
           >
@@ -82,23 +100,6 @@ export default function SearchHeader({
             <Search className="h-4 w-4 mr-2" />
             Search
           </Button>
-          <Select
-            defaultValue={cookies.country}
-            onValueChange={(val) => setCookie("country", val)}
-          >
-            <SelectTrigger className="w-full sm:w-[160px]">
-              <SelectValue placeholder="Select country" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="us">United States</SelectItem>
-              <SelectItem value="ca">Canada</SelectItem>
-              <SelectItem value="uk">United Kingdom</SelectItem>
-              <SelectItem value="au">Australia</SelectItem>
-              <SelectItem value="de">Germany</SelectItem>
-              <SelectItem value="fr">France</SelectItem>
-              <SelectItem value="jp">Japan</SelectItem>
-            </SelectContent>
-          </Select>
         </div>
       </div>
     </header>
