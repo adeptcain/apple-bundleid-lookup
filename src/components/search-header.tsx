@@ -1,18 +1,44 @@
-import { Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+"use client";
 
-export default function SearchHeader() {
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Dispatch, SetStateAction, useState, KeyboardEvent } from "react";
+
+export default function SearchHeader({
+  setSearchTerm,
+}: {
+  setSearchTerm: Dispatch<SetStateAction<string>>;
+}) {
+  const [searchField, setSearchField] = useState("");
+  const checkKey = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setSearchTerm(searchField);
+    }
+  };
+
   return (
     <header className="border-b sticky top-0 bg-background z-10">
       <div className="container mx-auto py-4 px-4">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <div className="relative flex-1 w-full">
-            <Input type="text" placeholder="Search..." className="w-full pr-10" />
+            <Input
+              type="text"
+              placeholder="Search..."
+              className="w-full pr-10"
+              value={searchField}
+              onChange={(e) => setSearchField(e.target.value)}
+              onKeyDown={checkKey}
+            />
           </div>
 
-          {/* Add platform dropdown here */}
           <Select>
             <SelectTrigger className="w-full sm:w-[180px]">
               <SelectValue placeholder="Select platform" />
@@ -44,6 +70,5 @@ export default function SearchHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
-
