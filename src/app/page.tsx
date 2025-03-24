@@ -1,8 +1,20 @@
 import Image from "next/image";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <header className="flex flex-row-reverse">
+        <Menu>
+          <MenuButton className="mx-1">Country</MenuButton>
+          <MenuItems anchor="bottom">
+            <MenuItem>
+              <a className="block data-[focus]:bg-gray-80">Australia</a>
+            </MenuItem>
+          </MenuItems>
+        </Menu>
+        <input className="object-fill mx-1"></input>
+      </header>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
