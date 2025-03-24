@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
     const mappedData = data.results.map((e, i) => {
       return {
         id: i,
-        icon: e.artworkUrl100,
+        icon: e.artworkUrl512,
         title: e.trackName,
         subtitle: e.artistName,
         content: e.bundleId,

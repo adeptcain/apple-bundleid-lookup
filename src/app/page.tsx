@@ -6,7 +6,7 @@ import { use, useEffect, useState } from "react";
 import { CookiesProvider } from "react-cookie";
 
 export default function Home() {
-  const [cards, setCards] = useState("");
+  const [cards, setCards] = useState([]);
   const [country, setCountry] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ export default function Home() {
         }
 
         const data = await res.json();
-        console.log(data);
+        setCards(data);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "An unknown error occurred"
@@ -61,7 +61,7 @@ export default function Home() {
           setCountry={setCountry}
         />
         <main className="container mx-auto py-6 px-4">
-          <CardList />
+          <CardList cardData={cards} />
         </main>
       </div>
     </CookiesProvider>
