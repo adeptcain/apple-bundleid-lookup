@@ -87,7 +87,7 @@ import { Card } from "@/components/ui/card";
 //   },
 // ];
 
-type Card = {
+type iTunesCard = {
   id: number;
   icon: string;
   title: string;
@@ -95,7 +95,7 @@ type Card = {
   content: string;
 };
 
-export default function CardList({ cardData }: { cardData: Card[] }) {
+export default function CardList({ cardData }: { cardData: iTunesCard[] }) {
   // State to track which card's content has been copied
   const [copiedId, setCopiedId] = useState<number | null>(null);
 
